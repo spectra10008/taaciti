@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\WebConfigController;
+use App\Http\Controllers\OfferController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +18,13 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::redirect('/', '/admin/login');
+Route::redirect('/', '/panel-admin/login');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-Route::prefix('admin')->middleware(['auth','web'])->group(function () {
+Route::prefix('panel-admin')->middleware(['auth','web'])->group(function () {
 
     Route::get('/edit_profile',[ProfileController::class,'edit_profile']);
     Route::post('/update_profile',[ProfileController::class,'update_profile']);
@@ -28,12 +32,16 @@ Route::prefix('admin')->middleware(['auth','web'])->group(function () {
 
 
 
+    Route::resource('/payment-methods',PaymentMethodController::class);
     Route::resource('/users',UserController::class);
+    Route::resource('/offers',OfferController::class);
+    Route::resource('/categories',CategoryController::class);
+    Route::resource('/web-configs',WebConfigController::class);
 
 
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    
+
 });
 require __DIR__ . '/auth.php';

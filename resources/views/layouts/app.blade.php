@@ -6,14 +6,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description"
-        content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="PIXINVENT">
+    <meta name="author" content="Taciti">
     <title>لوحة التحكم - @yield('title')</title>
-    <link rel="apple-touch-icon" href="{{ asset('/app-assets/images/ico/apple-icon-120.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/app-assets/images/ico/favicon.ico') }}">
+    <link rel="apple-touch-icon" href="{{ asset('/images/taciti-s2.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('/images/taciti-s2.png') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
@@ -39,27 +35,25 @@
     <!-- END: Custom CSS-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700&display=swap"
-        rel="stylesheet">
-</head>
-<!-- END: Head-->
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <!-- END: Head-->
 
-<!-- BEGIN: Body-->
-<style>
-    a,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    span {
-        font-family: 'Tajawal', sans-serif
-    }
-</style>
+    <!-- BEGIN: Body-->
+    <style>
+        a,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        span {
+            font-family: 'Almarai', sans-serif !important;
+        }
+    </style>
 
 <body class="vertical-layout vertical-menu-modern 2-columns  navbar-sticky footer-static  " data-open="click"
-    data-menu="vertical-menu-modern" data-col="2-columns" style="font-family: 'Tajawal', sans-serif;">
+    data-menu="vertical-menu-modern" data-col="2-columns" style="font-family: 'Almarai', sans-serif !important;">
 
     <!-- BEGIN: Header-->
     <div class="content-overlay"></div>
@@ -70,20 +64,6 @@
                 <div class="navbar-collapse" id="navbar-mobile">
 
                     <ul class="nav navbar-nav float-left ml-auto">
-                        <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link"
-                                id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span
-                                    class="selected-language">English</span></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown-flag"><a class="dropdown-item"
-                                    href="#" data-language="en"><i class="flag-icon flag-icon-us"></i>
-                                    English</a><a class="dropdown-item" href="#" data-language="fr"><i
-                                        class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item"
-                                    href="#" data-language="de"><i class="flag-icon flag-icon-de"></i>
-                                    German</a><a class="dropdown-item" href="#" data-language="pt"><i
-                                        class="flag-icon flag-icon-pt"></i> Portuguese</a></div>
-                        </li>
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i
-                                    class="ficon feather icon-maximize"></i></a></li>
                         <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label"
                                 href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span
                                     class="badge badge-pill badge-primary badge-up">5</span></a>
@@ -170,7 +150,8 @@
                                         width="40"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
-                                    href="/admin/edit_profile"><i class="feather icon-user"></i> تعديل البروفايل</a>
+                                    href="/panel-admin/edit_profile"><i class="feather icon-user"></i> تعديل
+                                    البروفايل</a>
                                 <div class="dropdown-divider"></div><a class="dropdown-item"
                                     href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
@@ -195,9 +176,8 @@
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand"
-                        href="../../../html/rtl/vertical-menu-template/index.html">
-                        <div class="brand-logo"></div>
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="/panel-admin/dashboard">
+                        <img src="{{ asset('/images/taciti-s2.png') }}" alt="" style="width: 35px">
                         <h2 class="brand-text mb-0">لوحة التحكم</h2>
                     </a></li>
                 <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i
@@ -209,30 +189,59 @@
         <div class="shadow-bottom"></div>
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-                <li class="nav-item  {{ request()->is('admin/dashboard') ? 'active' : '' }}"><a
-                        href="/admin/dashboard"><i class="feather icon-home"></i><span class="menu-title"
+                <li class="nav-item  {{ request()->is('panel-admin/dashboard') ? 'active' : '' }}"><a
+                        href="/panel-admin/dashboard"><i class="feather icon-home"></i><span class="menu-title"
                             data-i18n="Dashboard">الرئيسية</span></a>
                 </li>
                 <li class=" navigation-header"><span>القائمة</span>
                 </li>
-                <li class="nav-item"><a href="#"><i class="feather icon-zap"></i><span class="menu-title"
-                            data-i18n="Starter kit">قائمة رئيسية</span></a>
+                <li class="nav-item"><a href="#"><i class="fa fa-shopping-cart"></i><span class="menu-title"
+                            data-i18n="Starter kit">الطلبات </span></a>
                     <ul class="menu-content">
                         <li><a href="sk-layout-2-columns.html"><i></i><span class="menu-item"
-                                    data-i18n="2 columns">قائمة فرعية 1</span></a>
+                                    data-i18n="2 columns">الطلبات الجديدة</span></a>
                         </li>
                         <li class=""><a href="sk-layout-fixed-navbar.html"><i></i><span class="menu-item"
-                                    data-i18n="Fixed navbar">قائمة فرعية 2</span></a>
-                        </li>
-                        <li><a href="sk-layout-floating-navbar.html"><i></i><span class="menu-item"
-                                    data-i18n="Floating navbar">قائمة فرعية 3</span></a>
+                                    data-i18n="Fixed navbar">الطلبات المكتملة</span></a>
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ request()->is('admin/users') ? 'active' : '' }}"><a href="/admin/users"><i
+                            class="fa fa-file-pdf-o"></i><span class="menu-title" data-i18n="Email">
+                            الفواتير</span></a>
+                </li>
+                <li class="nav-item {{ request()->is('panel-admin/categories') ? 'active' : '' }}"><a href="/panel-admin/categories"><i
+                            class="fa fa-list-alt"></i><span class="menu-title" data-i18n="Email">
+                            الأقسام</span></a>
+                </li>
+                <li class="nav-item {{ request()->is('admin/categories') ? 'active' : '' }}"><a href="/admin/categories"><i
+                            class="fa fa-cubes"></i><span class="menu-title" data-i18n="Email">
+                            المنتجات</span></a>
+                </li>
+
+                <li class="nav-item {{ request()->is('admin/users') ? 'active' : '' }}"><a href="/admin/users"><i
+                            class="fa fa-gift"></i><span class="menu-title" data-i18n="Email">
+                            الكوبونات</span></a>
+                </li>
+                <li class="nav-item {{ request()->is('panel-admin/offers') ? 'active' : '' }}"><a href="/panel-admin/offers"><i
+                            class="fa fa-tags"></i><span class="menu-title" data-i18n="Email">
+                            العروض</span></a>
+                </li>
                 <li class=" navigation-header"><span>الإعدادات</span>
                 </li>
-                <li class="nav-item {{ request()->is('admin/users') ? 'active' : '' }}"><a href="/admin/users"><i
-                            class="fa fa-lock"></i><span class="menu-title" data-i18n="Email">مدراء
+                <li class="nav-item {{ request()->is('panel-admin/payment-methods') ? 'active' : '' }}"><a
+                        href="/panel-admin/payment-methods"><i class="fa fa-money"></i><span class="menu-title"
+                            data-i18n="Email">طرق
+                            الدفع</span></a>
+                </li>
+                <li class="nav-item {{ request()->is('panel-admin/web-configs') ? 'active' : '' }}"><a
+                        href="/panel-admin/web-configs"><i class="fa fa-cogs"></i><span class="menu-title"
+                            data-i18n="Email">اعدادات
+                            النظام</span></a>
+                </li>
+                <li class="nav-item {{ request()->is('panel-admin/users') ? 'active' : '' }}"><a
+                        href="/panel-admin/users"><i class="fa fa-lock"></i><span class="menu-title"
+                            data-i18n="Email">مدراء
                             النظام</span></a>
                 </li>
             </ul>
@@ -257,7 +266,7 @@
     <footer class="footer footer-static footer-light">
         <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">حقوق
                 الطبع {{ date('Y') }}<a class="text-bold-800 grey darken-2" href="#"
-                    target="_blank">Laravel,</a>كل الحقوق محفوظة</span><span
+                    target="_blank">Taaciti,</a>كل الحقوق محفوظة</span><span
                 class="float-md-right d-none d-md-block">Hand-crafted & Made with<i
                     class="feather icon-heart pink"></i></span>
             <button class="btn btn-primary btn-icon scroll-top" type="button"><i

@@ -15,7 +15,16 @@ class WebConfigController extends Controller
      */
     public function index()
     {
-        //
+        $web_configs = WebConfig::all();
+        $configs = [];
+        foreach($web_configs as $web_config)
+        {
+            $configs[$web_config->key] = $web_config->value;
+        }
+
+        return view('web_configs.index')
+        ->with('configs',$configs)
+        ;
     }
 
     /**
@@ -36,7 +45,49 @@ class WebConfigController extends Controller
      */
     public function store(StoreWebConfigRequest $request)
     {
-        //
+        $all_data = $request->all();
+        foreach ($all_data as $key=>$single_data)
+        {
+            $check_data = WebConfig::where('key',$key)->first();
+            if($check_data == null)
+            {
+                $web_configs = new WebConfig();
+                $web_configs->key = $key;
+                if($key == 'logo')
+                {
+                    if ($single_data->isValid()) {
+                        $path = $single_data->store(
+                            'website_logo', 'public'
+                        );
+                        $web_configs->value = $path;
+                    }
+                }else 
+                {
+                    $web_configs->value = $single_data;
+                }
+                $web_configs->save();
+            }else
+            {
+                $check_data->key = $key;
+                if($key == 'logo')
+                {
+                    if ($single_data->isValid()) {
+                        $path = $single_data->store(
+                            'website_logo', 'public'
+                        );
+                        $check_data->value = $path;
+                    }
+                }else 
+                {
+                    $check_data->value = $single_data;
+                }
+                $check_data->update();
+            }
+        }
+
+        toastr()->success('Operation Completed Successfully !!');
+        return back();
+
     }
 
     /**
